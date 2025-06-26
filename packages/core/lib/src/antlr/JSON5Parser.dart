@@ -16,10 +16,10 @@ class JSON5Parser extends Parser {
   static final PredictionContextCache _sharedContextCache = PredictionContextCache();
   static const int TOKEN_T__0 = 1, TOKEN_T__1 = 2, TOKEN_T__2 = 3, TOKEN_T__3 = 4, 
                    TOKEN_T__4 = 5, TOKEN_T__5 = 6, TOKEN_T__6 = 7, TOKEN_T__7 = 8, 
-                   TOKEN_T__8 = 9, TOKEN_SINGLE_LINE_COMMENT = 10, TOKEN_MULTI_LINE_COMMENT = 11, 
-                   TOKEN_LITERAL = 12, TOKEN_STRING = 13, TOKEN_NUMBER = 14, 
-                   TOKEN_NUMERIC_LITERAL = 15, TOKEN_SYMBOL = 16, TOKEN_IDENTIFIER = 17, 
-                   TOKEN_WS = 18;
+                   TOKEN_T__8 = 9, TOKEN_T__9 = 10, TOKEN_SINGLE_LINE_COMMENT = 11, 
+                   TOKEN_MULTI_LINE_COMMENT = 12, TOKEN_LITERAL = 13, TOKEN_STRING = 14, 
+                   TOKEN_NUMBER = 15, TOKEN_NUMERIC_LITERAL = 16, TOKEN_SYMBOL = 17, 
+                   TOKEN_IDENTIFIER = 18, TOKEN_WS = 19;
 
   @override
   final List<String> ruleNames = [
@@ -28,13 +28,13 @@ class JSON5Parser extends Parser {
   ];
 
   static final List<String?> _LITERAL_NAMES = [
-      null, "'{'", "','", "'}'", "':'", "'['", "']'", "'true'", "'false'", 
-      "'null'"
+      null, "'{'", "','", "'}'", "'\\uFF0C'", "':'", "'['", "']'", "'true'", 
+      "'false'", "'null'"
   ];
   static final List<String?> _SYMBOLIC_NAMES = [
-      null, null, null, null, null, null, null, null, null, null, "SINGLE_LINE_COMMENT", 
-      "MULTI_LINE_COMMENT", "LITERAL", "STRING", "NUMBER", "NUMERIC_LITERAL", 
-      "SYMBOL", "IDENTIFIER", "WS"
+      null, null, null, null, null, null, null, null, null, null, null, 
+      "SINGLE_LINE_COMMENT", "MULTI_LINE_COMMENT", "LITERAL", "STRING", 
+      "NUMBER", "NUMERIC_LITERAL", "SYMBOL", "IDENTIFIER", "WS"
   ];
   static final Vocabulary VOCABULARY = VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
 
@@ -67,7 +67,7 @@ class JSON5Parser extends Parser {
       state = 21;
       errorHandler.sync(this);
       _la = tokenStream.LA(1)!;
-      if ((((_la) & ~0x3f) == 0 && ((1 << _la) & 123810) != 0)) {
+      if ((((_la) & ~0x3f) == 0 && ((1 << _la) & 247618) != 0)) {
         state = 20;
         value();
       }
@@ -90,9 +90,9 @@ class JSON5Parser extends Parser {
     int _la;
     try {
       int _alt;
-      state = 41;
+      state = 83;
       errorHandler.sync(this);
-      switch (interpreter!.adaptivePredict(tokenStream, 3, context)) {
+      switch (interpreter!.adaptivePredict(tokenStream, 9, context)) {
       case 1:
         enterOuterAlt(_localctx, 1);
         state = 25;
@@ -129,6 +129,95 @@ class JSON5Parser extends Parser {
         state = 39;
         match(TOKEN_T__0);
         state = 40;
+        pair();
+        state = 45;
+        errorHandler.sync(this);
+        _alt = interpreter!.adaptivePredict(tokenStream, 3, context);
+        while (_alt != 2 && _alt != ATN.INVALID_ALT_NUMBER) {
+          if (_alt == 1) {
+            state = 41;
+            match(TOKEN_T__3);
+            state = 42;
+            pair(); 
+          }
+          state = 47;
+          errorHandler.sync(this);
+          _alt = interpreter!.adaptivePredict(tokenStream, 3, context);
+        }
+        state = 49;
+        errorHandler.sync(this);
+        _la = tokenStream.LA(1)!;
+        if (_la == TOKEN_T__3) {
+          state = 48;
+          match(TOKEN_T__3);
+        }
+
+        state = 51;
+        match(TOKEN_T__2);
+        break;
+      case 3:
+        enterOuterAlt(_localctx, 3);
+        state = 53;
+        match(TOKEN_T__0);
+        state = 54;
+        pair();
+        state = 59;
+        errorHandler.sync(this);
+        _la = tokenStream.LA(1)!;
+        while (_la == TOKEN_T__3) {
+          state = 55;
+          match(TOKEN_T__3);
+          state = 56;
+          pair();
+          state = 61;
+          errorHandler.sync(this);
+          _la = tokenStream.LA(1)!;
+        }
+        state = 63;
+        errorHandler.sync(this);
+        _la = tokenStream.LA(1)!;
+        if (_la == TOKEN_T__1) {
+          state = 62;
+          match(TOKEN_T__1);
+        }
+
+        state = 65;
+        match(TOKEN_T__2);
+        break;
+      case 4:
+        enterOuterAlt(_localctx, 4);
+        state = 67;
+        match(TOKEN_T__0);
+        state = 68;
+        pair();
+        state = 73;
+        errorHandler.sync(this);
+        _la = tokenStream.LA(1)!;
+        while (_la == TOKEN_T__1) {
+          state = 69;
+          match(TOKEN_T__1);
+          state = 70;
+          pair();
+          state = 75;
+          errorHandler.sync(this);
+          _la = tokenStream.LA(1)!;
+        }
+        state = 77;
+        errorHandler.sync(this);
+        _la = tokenStream.LA(1)!;
+        if (_la == TOKEN_T__3) {
+          state = 76;
+          match(TOKEN_T__3);
+        }
+
+        state = 79;
+        match(TOKEN_T__2);
+        break;
+      case 5:
+        enterOuterAlt(_localctx, 5);
+        state = 81;
+        match(TOKEN_T__0);
+        state = 82;
         match(TOKEN_T__2);
         break;
       }
@@ -147,11 +236,11 @@ class JSON5Parser extends Parser {
     enterRule(_localctx, 4, RULE_pair);
     try {
       enterOuterAlt(_localctx, 1);
-      state = 43;
+      state = 85;
       key();
-      state = 44;
-      match(TOKEN_T__3);
-      state = 45;
+      state = 86;
+      match(TOKEN_T__4);
+      state = 87;
       value();
     } on RecognitionException catch (re) {
       _localctx.exception = re;
@@ -169,9 +258,9 @@ class JSON5Parser extends Parser {
     int _la;
     try {
       enterOuterAlt(_localctx, 1);
-      state = 47;
+      state = 89;
       _la = tokenStream.LA(1)!;
-      if (!((((_la) & ~0x3f) == 0 && ((1 << _la) & 176128) != 0))) {
+      if (!((((_la) & ~0x3f) == 0 && ((1 << _la) & 352256) != 0))) {
       errorHandler.recoverInline(this);
       } else {
         if ( tokenStream.LA(1)! == IntStream.EOF ) matchedEOF = true;
@@ -192,40 +281,40 @@ class JSON5Parser extends Parser {
     dynamic _localctx = ValueContext(context, state);
     enterRule(_localctx, 8, RULE_value);
     try {
-      state = 55;
+      state = 97;
       errorHandler.sync(this);
       switch (tokenStream.LA(1)!) {
       case TOKEN_STRING:
         enterOuterAlt(_localctx, 1);
-        state = 49;
+        state = 91;
         string();
         break;
       case TOKEN_NUMBER:
       case TOKEN_NUMERIC_LITERAL:
       case TOKEN_SYMBOL:
         enterOuterAlt(_localctx, 2);
-        state = 50;
+        state = 92;
         number();
         break;
       case TOKEN_T__0:
         enterOuterAlt(_localctx, 3);
-        state = 51;
+        state = 93;
         object();
         break;
-      case TOKEN_T__4:
+      case TOKEN_T__5:
         enterOuterAlt(_localctx, 4);
-        state = 52;
+        state = 94;
         array();
         break;
-      case TOKEN_T__6:
       case TOKEN_T__7:
+      case TOKEN_T__8:
         enterOuterAlt(_localctx, 5);
-        state = 53;
+        state = 95;
         bool();
         break;
-      case TOKEN_T__8:
+      case TOKEN_T__9:
         enterOuterAlt(_localctx, 6);
-        state = 54;
+        state = 96;
         null_();
         break;
       default:
@@ -247,46 +336,46 @@ class JSON5Parser extends Parser {
     int _la;
     try {
       int _alt;
-      state = 73;
+      state = 115;
       errorHandler.sync(this);
-      switch (interpreter!.adaptivePredict(tokenStream, 7, context)) {
+      switch (interpreter!.adaptivePredict(tokenStream, 13, context)) {
       case 1:
         enterOuterAlt(_localctx, 1);
-        state = 57;
-        match(TOKEN_T__4);
-        state = 58;
+        state = 99;
+        match(TOKEN_T__5);
+        state = 100;
         value();
-        state = 63;
+        state = 105;
         errorHandler.sync(this);
-        _alt = interpreter!.adaptivePredict(tokenStream, 5, context);
+        _alt = interpreter!.adaptivePredict(tokenStream, 11, context);
         while (_alt != 2 && _alt != ATN.INVALID_ALT_NUMBER) {
           if (_alt == 1) {
-            state = 59;
+            state = 101;
             match(TOKEN_T__1);
-            state = 60;
+            state = 102;
             value(); 
           }
-          state = 65;
+          state = 107;
           errorHandler.sync(this);
-          _alt = interpreter!.adaptivePredict(tokenStream, 5, context);
+          _alt = interpreter!.adaptivePredict(tokenStream, 11, context);
         }
-        state = 67;
+        state = 109;
         errorHandler.sync(this);
         _la = tokenStream.LA(1)!;
         if (_la == TOKEN_T__1) {
-          state = 66;
+          state = 108;
           match(TOKEN_T__1);
         }
 
-        state = 69;
-        match(TOKEN_T__5);
+        state = 111;
+        match(TOKEN_T__6);
         break;
       case 2:
         enterOuterAlt(_localctx, 2);
-        state = 71;
-        match(TOKEN_T__4);
-        state = 72;
+        state = 113;
         match(TOKEN_T__5);
+        state = 114;
+        match(TOKEN_T__6);
         break;
       }
     } on RecognitionException catch (re) {
@@ -304,7 +393,7 @@ class JSON5Parser extends Parser {
     enterRule(_localctx, 12, RULE_string);
     try {
       enterOuterAlt(_localctx, 1);
-      state = 75;
+      state = 117;
       match(TOKEN_STRING);
     } on RecognitionException catch (re) {
       _localctx.exception = re;
@@ -322,9 +411,9 @@ class JSON5Parser extends Parser {
     int _la;
     try {
       enterOuterAlt(_localctx, 1);
-      state = 77;
+      state = 119;
       _la = tokenStream.LA(1)!;
-      if (!(_la == TOKEN_T__6 || _la == TOKEN_T__7)) {
+      if (!(_la == TOKEN_T__7 || _la == TOKEN_T__8)) {
       errorHandler.recoverInline(this);
       } else {
         if ( tokenStream.LA(1)! == IntStream.EOF ) matchedEOF = true;
@@ -346,8 +435,8 @@ class JSON5Parser extends Parser {
     enterRule(_localctx, 16, RULE_null);
     try {
       enterOuterAlt(_localctx, 1);
-      state = 79;
-      match(TOKEN_T__8);
+      state = 121;
+      match(TOKEN_T__9);
     } on RecognitionException catch (re) {
       _localctx.exception = re;
       errorHandler.reportError(this, re);
@@ -364,15 +453,15 @@ class JSON5Parser extends Parser {
     int _la;
     try {
       enterOuterAlt(_localctx, 1);
-      state = 82;
+      state = 124;
       errorHandler.sync(this);
       _la = tokenStream.LA(1)!;
       if (_la == TOKEN_SYMBOL) {
-        state = 81;
+        state = 123;
         match(TOKEN_SYMBOL);
       }
 
-      state = 84;
+      state = 126;
       _la = tokenStream.LA(1)!;
       if (!(_la == TOKEN_NUMBER || _la == TOKEN_NUMERIC_LITERAL)) {
       errorHandler.recoverInline(this);
@@ -392,33 +481,48 @@ class JSON5Parser extends Parser {
   }
 
   static const List<int> _serializedATN = [
-      4,1,18,87,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,
+      4,1,19,129,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,6,
       2,7,7,7,2,8,7,8,2,9,7,9,1,0,3,0,22,8,0,1,0,1,0,1,1,1,1,1,1,1,1,5,1,
-      30,8,1,10,1,12,1,33,9,1,1,1,3,1,36,8,1,1,1,1,1,1,1,1,1,3,1,42,8,1,
-      1,2,1,2,1,2,1,2,1,3,1,3,1,4,1,4,1,4,1,4,1,4,1,4,3,4,56,8,4,1,5,1,5,
-      1,5,1,5,5,5,62,8,5,10,5,12,5,65,9,5,1,5,3,5,68,8,5,1,5,1,5,1,5,1,5,
-      3,5,74,8,5,1,6,1,6,1,7,1,7,1,8,1,8,1,9,3,9,83,8,9,1,9,1,9,1,9,0,0,
-      10,0,2,4,6,8,10,12,14,16,18,0,3,3,0,12,13,15,15,17,17,1,0,7,8,1,0,
-      14,15,89,0,21,1,0,0,0,2,41,1,0,0,0,4,43,1,0,0,0,6,47,1,0,0,0,8,55,
-      1,0,0,0,10,73,1,0,0,0,12,75,1,0,0,0,14,77,1,0,0,0,16,79,1,0,0,0,18,
-      82,1,0,0,0,20,22,3,8,4,0,21,20,1,0,0,0,21,22,1,0,0,0,22,23,1,0,0,0,
-      23,24,5,0,0,1,24,1,1,0,0,0,25,26,5,1,0,0,26,31,3,4,2,0,27,28,5,2,0,
-      0,28,30,3,4,2,0,29,27,1,0,0,0,30,33,1,0,0,0,31,29,1,0,0,0,31,32,1,
-      0,0,0,32,35,1,0,0,0,33,31,1,0,0,0,34,36,5,2,0,0,35,34,1,0,0,0,35,36,
-      1,0,0,0,36,37,1,0,0,0,37,38,5,3,0,0,38,42,1,0,0,0,39,40,5,1,0,0,40,
-      42,5,3,0,0,41,25,1,0,0,0,41,39,1,0,0,0,42,3,1,0,0,0,43,44,3,6,3,0,
-      44,45,5,4,0,0,45,46,3,8,4,0,46,5,1,0,0,0,47,48,7,0,0,0,48,7,1,0,0,
-      0,49,56,3,12,6,0,50,56,3,18,9,0,51,56,3,2,1,0,52,56,3,10,5,0,53,56,
-      3,14,7,0,54,56,3,16,8,0,55,49,1,0,0,0,55,50,1,0,0,0,55,51,1,0,0,0,
-      55,52,1,0,0,0,55,53,1,0,0,0,55,54,1,0,0,0,56,9,1,0,0,0,57,58,5,5,0,
-      0,58,63,3,8,4,0,59,60,5,2,0,0,60,62,3,8,4,0,61,59,1,0,0,0,62,65,1,
-      0,0,0,63,61,1,0,0,0,63,64,1,0,0,0,64,67,1,0,0,0,65,63,1,0,0,0,66,68,
-      5,2,0,0,67,66,1,0,0,0,67,68,1,0,0,0,68,69,1,0,0,0,69,70,5,6,0,0,70,
-      74,1,0,0,0,71,72,5,5,0,0,72,74,5,6,0,0,73,57,1,0,0,0,73,71,1,0,0,0,
-      74,11,1,0,0,0,75,76,5,13,0,0,76,13,1,0,0,0,77,78,7,1,0,0,78,15,1,0,
-      0,0,79,80,5,9,0,0,80,17,1,0,0,0,81,83,5,16,0,0,82,81,1,0,0,0,82,83,
-      1,0,0,0,83,84,1,0,0,0,84,85,7,2,0,0,85,19,1,0,0,0,9,21,31,35,41,55,
-      63,67,73,82
+      30,8,1,10,1,12,1,33,9,1,1,1,3,1,36,8,1,1,1,1,1,1,1,1,1,1,1,1,1,5,1,
+      44,8,1,10,1,12,1,47,9,1,1,1,3,1,50,8,1,1,1,1,1,1,1,1,1,1,1,1,1,5,1,
+      58,8,1,10,1,12,1,61,9,1,1,1,3,1,64,8,1,1,1,1,1,1,1,1,1,1,1,1,1,5,1,
+      72,8,1,10,1,12,1,75,9,1,1,1,3,1,78,8,1,1,1,1,1,1,1,1,1,3,1,84,8,1,
+      1,2,1,2,1,2,1,2,1,3,1,3,1,4,1,4,1,4,1,4,1,4,1,4,3,4,98,8,4,1,5,1,5,
+      1,5,1,5,5,5,104,8,5,10,5,12,5,107,9,5,1,5,3,5,110,8,5,1,5,1,5,1,5,
+      1,5,3,5,116,8,5,1,6,1,6,1,7,1,7,1,8,1,8,1,9,3,9,125,8,9,1,9,1,9,1,
+      9,0,0,10,0,2,4,6,8,10,12,14,16,18,0,3,3,0,13,14,16,16,18,18,1,0,8,
+      9,1,0,15,16,140,0,21,1,0,0,0,2,83,1,0,0,0,4,85,1,0,0,0,6,89,1,0,0,
+      0,8,97,1,0,0,0,10,115,1,0,0,0,12,117,1,0,0,0,14,119,1,0,0,0,16,121,
+      1,0,0,0,18,124,1,0,0,0,20,22,3,8,4,0,21,20,1,0,0,0,21,22,1,0,0,0,22,
+      23,1,0,0,0,23,24,5,0,0,1,24,1,1,0,0,0,25,26,5,1,0,0,26,31,3,4,2,0,
+      27,28,5,2,0,0,28,30,3,4,2,0,29,27,1,0,0,0,30,33,1,0,0,0,31,29,1,0,
+      0,0,31,32,1,0,0,0,32,35,1,0,0,0,33,31,1,0,0,0,34,36,5,2,0,0,35,34,
+      1,0,0,0,35,36,1,0,0,0,36,37,1,0,0,0,37,38,5,3,0,0,38,84,1,0,0,0,39,
+      40,5,1,0,0,40,45,3,4,2,0,41,42,5,4,0,0,42,44,3,4,2,0,43,41,1,0,0,0,
+      44,47,1,0,0,0,45,43,1,0,0,0,45,46,1,0,0,0,46,49,1,0,0,0,47,45,1,0,
+      0,0,48,50,5,4,0,0,49,48,1,0,0,0,49,50,1,0,0,0,50,51,1,0,0,0,51,52,
+      5,3,0,0,52,84,1,0,0,0,53,54,5,1,0,0,54,59,3,4,2,0,55,56,5,4,0,0,56,
+      58,3,4,2,0,57,55,1,0,0,0,58,61,1,0,0,0,59,57,1,0,0,0,59,60,1,0,0,0,
+      60,63,1,0,0,0,61,59,1,0,0,0,62,64,5,2,0,0,63,62,1,0,0,0,63,64,1,0,
+      0,0,64,65,1,0,0,0,65,66,5,3,0,0,66,84,1,0,0,0,67,68,5,1,0,0,68,73,
+      3,4,2,0,69,70,5,2,0,0,70,72,3,4,2,0,71,69,1,0,0,0,72,75,1,0,0,0,73,
+      71,1,0,0,0,73,74,1,0,0,0,74,77,1,0,0,0,75,73,1,0,0,0,76,78,5,4,0,0,
+      77,76,1,0,0,0,77,78,1,0,0,0,78,79,1,0,0,0,79,80,5,3,0,0,80,84,1,0,
+      0,0,81,82,5,1,0,0,82,84,5,3,0,0,83,25,1,0,0,0,83,39,1,0,0,0,83,53,
+      1,0,0,0,83,67,1,0,0,0,83,81,1,0,0,0,84,3,1,0,0,0,85,86,3,6,3,0,86,
+      87,5,5,0,0,87,88,3,8,4,0,88,5,1,0,0,0,89,90,7,0,0,0,90,7,1,0,0,0,91,
+      98,3,12,6,0,92,98,3,18,9,0,93,98,3,2,1,0,94,98,3,10,5,0,95,98,3,14,
+      7,0,96,98,3,16,8,0,97,91,1,0,0,0,97,92,1,0,0,0,97,93,1,0,0,0,97,94,
+      1,0,0,0,97,95,1,0,0,0,97,96,1,0,0,0,98,9,1,0,0,0,99,100,5,6,0,0,100,
+      105,3,8,4,0,101,102,5,2,0,0,102,104,3,8,4,0,103,101,1,0,0,0,104,107,
+      1,0,0,0,105,103,1,0,0,0,105,106,1,0,0,0,106,109,1,0,0,0,107,105,1,
+      0,0,0,108,110,5,2,0,0,109,108,1,0,0,0,109,110,1,0,0,0,110,111,1,0,
+      0,0,111,112,5,7,0,0,112,116,1,0,0,0,113,114,5,6,0,0,114,116,5,7,0,
+      0,115,99,1,0,0,0,115,113,1,0,0,0,116,11,1,0,0,0,117,118,5,14,0,0,118,
+      13,1,0,0,0,119,120,7,1,0,0,120,15,1,0,0,0,121,122,5,10,0,0,122,17,
+      1,0,0,0,123,125,5,17,0,0,124,123,1,0,0,0,124,125,1,0,0,0,125,126,1,
+      0,0,0,126,127,7,2,0,0,127,19,1,0,0,0,15,21,31,35,45,49,59,63,73,77,
+      83,97,105,109,115,124
   ];
 
   static final ATN _ATN =

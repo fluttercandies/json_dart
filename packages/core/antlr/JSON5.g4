@@ -12,7 +12,10 @@ json5
    ;
 
 object
-   : '{' pair (',' pair)* ','? '}'
+   :'{' pair (',' pair)* ','? '}'
+   | '{' pair ('，' pair)* '，'? '}'
+   | '{' pair ('，' pair)* ','? '}'
+   | '{' pair (',' pair)* '，'? '}'
    | '{' '}'
    ;
 
