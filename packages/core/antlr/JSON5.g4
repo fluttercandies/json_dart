@@ -41,6 +41,9 @@ value
 
 array
    : '[' value (',' value)* ','? ']'
+   | '[' value ('，' value)* ','? ']'
+   | '[' value ('，' value)* '，'? ']'
+   | '[' value (',' value)* '，'? ']'
    | '[' ']'
    ;
 
