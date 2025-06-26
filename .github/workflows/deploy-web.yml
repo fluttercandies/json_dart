@@ -32,6 +32,7 @@ jobs:
           cd apps/jsond
           flutter build web --release --tree-shake-icons
           dart scripts/web.dart
+          cp -a .vercel build/web
           cd build/web
           npm install -g vercel
-          vercel deploy --token ${{ secrets.VERCEL_TOKEN }} --project ${{ secrets.VERCEL_PROJECT_ID }} --org ${{ secrets.VERCEL_ORG_ID }} --prod
+          vercel deploy --token ${{ secrets.VERCEL_TOKEN }} --prod
