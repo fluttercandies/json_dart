@@ -34,6 +34,4 @@ jobs:
           dart scripts/web.dart
           cd build/web
           npm install -g vercel
-          vercel login --token ${{ secrets.VERCEL_TOKEN }}
-          vercel link --project ${{ secrets.VERCEL_PROJECT_ID }} --org ${{ secrets.VERCEL_ORG_ID }} --yes
-          vercel deploy --prod --token ${{ secrets.VERCEL_TOKEN }}
+          vercel deploy --token ${{ secrets.VERCEL_TOKEN }} --project ${{ secrets.VERCEL_PROJECT_ID }} --org ${{ secrets.VERCEL_ORG_ID }} --prod
