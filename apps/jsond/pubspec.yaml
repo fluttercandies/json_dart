@@ -2,7 +2,7 @@ name: jsond
 description: A template-supported tool for converting JSON to Dart code.
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 1.0.3+4
+version: 1.0.4+5
 
 environment:
   sdk: '>=2.18.0 <4.0.0'
@@ -24,7 +24,7 @@ dependencies:
   hive_flutter: ^1.1.0
   flex_color_picker: ^3.2.1
   recase: ^4.1.0
-  dart_style: ^2.3.1
+  dart_style: ^3.1.0
   url_launcher: ^6.1.11
 
 dev_dependencies:
@@ -34,8 +34,6 @@ dev_dependencies:
   flutter_gen_runner: ^5.3.0
   build_runner: ^2.3.3
   flutter_launcher_icons: ^0.13.1
-  hive_generator: ^2.0.0
-  build_web_compilers: ^3.2.7
 
 flutter:
   uses-material-design: true

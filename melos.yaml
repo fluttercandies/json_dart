@@ -20,7 +20,7 @@ command:
     releaseUrl: false
 
 scripts:
-  upgrade: melos exec -- dart pub upgrade --null-safety
+  upgrade: melos exec -- dart pub upgrade
   analyze:
     exec: dart analyze .
   publish: melos publish --no-dry-run --ignore="*example*" --yes

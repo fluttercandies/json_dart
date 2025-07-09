@@ -51,7 +51,9 @@ String render(
     keywords: keywords,
   );
   if (dartFormat) {
-    return DartFormatter(fixes: StyleFix.all).format(code);
+    return DartFormatter(
+      languageVersion: DartFormatter.latestLanguageVersion,
+    ).format(code);
   }
   return code;
 }

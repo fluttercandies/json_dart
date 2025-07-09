@@ -30,7 +30,8 @@ import 'widget/ripple_tap.dart';
 
 part 'main.g.dart';
 
-MediaQueryData get mediaQuery => MediaQueryData.fromWindow(window);
+MediaQueryData get mediaQuery =>
+    MediaQueryData.fromView(PlatformDispatcher.instance.views.first);
 
 Map<String, TextStyle> lightCodeTheme(Color backgroundColor) {
   final map = Map<String, TextStyle>.from(tomorrowTheme);
@@ -186,11 +187,39 @@ class _MyHomePageState extends State<MyHomePage> with WindowListener {
       id: -3,
     ),
     Template(
+      name: 'JsonSerializable With HiveCE',
+      template: jsonSerializableWithHiveCE,
+      builtIn: true,
+      dartFormat: true,
+      id: -9,
+    ),
+    Template(
       name: 'Freezed',
       template: freezed,
       builtIn: true,
       dartFormat: true,
       id: -4,
+    ),
+    Template(
+      name: 'Freezed With Default',
+      template: freezedWithDefault,
+      builtIn: true,
+      dartFormat: true,
+      id: -8,
+    ),
+    Template(
+      name: 'Freezed With HiveCE',
+      template: freezedWithHiveCE,
+      builtIn: true,
+      dartFormat: true,
+      id: -10,
+    ),
+    Template(
+      name: 'Freezed With Default And HiveCE',
+      template: freezedWithDefaultAndHiveCE,
+      builtIn: true,
+      dartFormat: true,
+      id: -11,
     ),
     Template(
       name: 'Isar',
@@ -212,13 +241,6 @@ class _MyHomePageState extends State<MyHomePage> with WindowListener {
       builtIn: true,
       dartFormat: true,
       id: -7,
-    ),
-    Template(
-      name: 'Freezed With Default',
-      template: freezedWithDefault,
-      builtIn: true,
-      dartFormat: true,
-      id: -8,
     ),
   ];
 
@@ -475,7 +497,9 @@ class _MyHomePageState extends State<MyHomePage> with WindowListener {
                     keywords: builtInDartKeywords,
                   );
                   if (tpl.dartFormat) {
-                    code = DartFormatter(fixes: StyleFix.all).format(code);
+                    code = DartFormatter(
+                      languageVersion: DartFormatter.latestLanguageVersion,
+                    ).format(code);
                   }
                   _codes.value = code
                       .split('\n')
@@ -620,7 +644,9 @@ class _MyHomePageState extends State<MyHomePage> with WindowListener {
         keywords: builtInDartKeywords,
       );
       if (tpl.dartFormat) {
-        code = DartFormatter(fixes: StyleFix.all).format(code);
+        code = DartFormatter(
+          languageVersion: DartFormatter.latestLanguageVersion,
+        ).format(code);
       }
       _codes.value = code
           .split('\n')

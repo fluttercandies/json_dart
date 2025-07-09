@@ -1,4 +1,4 @@
-import 'package:json/cli.dart';
+import 'package:json_cli/cli.dart';
 
 void main() {
   cli(['-h']);

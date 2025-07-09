@@ -7,7 +7,7 @@ environment:
   sdk: '>=2.19.6 <3.0.0'
 
 dependencies:
-  json:
+  json_cli:
     path: ../
 
 dev_dependencies:

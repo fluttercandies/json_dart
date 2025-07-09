@@ -46,6 +46,27 @@ class JsonOption {
         case 'freezed':
           template = freezed;
           break;
+        case 'freezed_with_default':
+          template = freezedWithDefault; // Default to with_final if empty
+          break;
+        case 'isar':
+          template = isar;
+          break;
+        case 'isar_with_json_serializable':
+          template = isarWithJsonSerializable;
+          break;
+        case 'isar_with_freezed':
+          template = isarWithFreezed;
+          break;
+        case 'json_serializable_with_hivece':
+          template = jsonSerializableWithHiveCE;
+          break;
+        case 'freezed_with_hivece':
+          template = freezedWithHiveCE;
+          break;
+        case 'freezed_with_default_hivece':
+          template = freezedWithDefaultAndHiveCE;
+          break;
         default:
           throw StateError('Unreachable...');
       }

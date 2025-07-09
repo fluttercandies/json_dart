@@ -18,12 +18,22 @@ void main() {
         const MapEntry('isar', isar),
         const MapEntry('isar_with_json_serializable', isarWithJsonSerializable),
         const MapEntry('isar_with_freezed', isarWithFreezed),
+        const MapEntry('freezed_with_default', freezedWithDefault),
+        const MapEntry(
+            'json_serializable_with_hivece', jsonSerializableWithHiveCE),
+        const MapEntry('freezed_with_hivece', freezedWithHiveCE),
+        const MapEntry(
+          'freezed_with_default_hivece',
+          freezedWithDefaultAndHiveCE,
+        ),
       ];
       for (final tpl in tpls) {
         final rendered =
             renderObjs(tpl.value, objs, keywords: builtInDartKeywords);
         File('$dir/${tpl.key}.dart').writeAsStringSync(rendered);
-        final format = DartFormatter(fixes: StyleFix.all).format(rendered);
+        final format = DartFormatter(
+          languageVersion: DartFormatter.latestLanguageVersion,
+        ).format(rendered);
         File('$dir/${tpl.key}.dart').writeAsStringSync(format);
       }
     });

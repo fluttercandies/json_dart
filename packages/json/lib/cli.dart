@@ -36,7 +36,19 @@ Future<void> cli(List<String> arguments) async {
     'template',
     abbr: 't',
     defaultsTo: 'with_final',
-    allowed: ['with_final', 'no_final', 'json_serializable', 'freezed'],
+    allowed: [
+      'with_final',
+      'no_final',
+      'json_serializable',
+      'freezed',
+      'freezed_with_default',
+      'isar',
+      'isar_with_json_serializable',
+      'isar_with_freezed',
+      'json_serializable_with_hivece',
+      'freezed_with_hivece',
+      'freezed_with_default_hivece',
+    ],
     help: 'Which built-in template to use?',
   );
   parser.addOption(
