@@ -272,7 +272,7 @@ part 'models.freezed.dart';
 
 {{# objs }}
 @freezed
-class {{# @pascal_case }}{{ obj_naming }}{{/ @pascal_case }} with _${{# @pascal_case }}{{ obj_naming }}{{/ @pascal_case }} {
+sealed class {{# @pascal_case }}{{ obj_naming }}{{/ @pascal_case }} with _${{# @pascal_case }}{{ obj_naming }}{{/ @pascal_case }} {
 
   const factory {{# @pascal_case }}{{ obj_naming }}{{/ @pascal_case }}({{# obj_has_fields }}{ {{/ obj_has_fields }}
 {{# obj_fields }}
@@ -305,7 +305,7 @@ part 'models.g.dart';
 
 {{# objs }}
 @freezed
-class {{# @pascal_case }}{{ obj_naming }}{{/ @pascal_case }} with _${{# @pascal_case }}{{ obj_naming }}{{/ @pascal_case }} {
+sealed class {{# @pascal_case }}{{ obj_naming }}{{/ @pascal_case }} with _${{# @pascal_case }}{{ obj_naming }}{{/ @pascal_case }} {
 
   const factory {{# @pascal_case }}{{ obj_naming }}{{/ @pascal_case }}({{# obj_has_fields }}{ {{/ obj_has_fields }}
 {{# obj_fields }}
@@ -332,7 +332,7 @@ part 'models.freezed.dart';
 
 {{# objs }}
 @freezed
-class {{# @pascal_case }}{{ obj_naming }}{{/ @pascal_case }} with _${{# @pascal_case }}{{ obj_naming }}{{/ @pascal_case }} {
+sealed class {{# @pascal_case }}{{ obj_naming }}{{/ @pascal_case }} with _${{# @pascal_case }}{{ obj_naming }}{{/ @pascal_case }} {
 
   const factory {{# @pascal_case }}{{ obj_naming }}{{/ @pascal_case }}({{# obj_has_fields }}{ {{/ obj_has_fields }}
 {{# obj_fields }}
@@ -364,7 +364,7 @@ part 'models.g.dart';
 
 {{# objs }}
 @freezed
-class {{# @pascal_case }}{{ obj_naming }}{{/ @pascal_case }} with _${{# @pascal_case }}{{ obj_naming }}{{/ @pascal_case }} {
+sealed class {{# @pascal_case }}{{ obj_naming }}{{/ @pascal_case }} with _${{# @pascal_case }}{{ obj_naming }}{{/ @pascal_case }} {
 
   const factory {{# @pascal_case }}{{ obj_naming }}{{/ @pascal_case }}({{# obj_has_fields }}{ {{/ obj_has_fields }}
 {{# obj_fields }}
