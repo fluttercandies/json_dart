@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:json_core/core.dart';
+import 'package:jsond/jsond.dart';
 
 class JsonOption {
   JsonOption({
@@ -66,6 +66,9 @@ class JsonOption {
           break;
         case 'freezed_with_default_hivece':
           template = freezedWithDefaultAndHiveCE;
+          break;
+        case 'unfreezed_with_default_hivece':
+          template = unfreezedWithDefaultAndHiveCE;
           break;
         default:
           throw StateError('Unreachable...');

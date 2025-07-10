@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:json_core/core.dart';
+import 'package:jsond/jsond.dart';
 
 Future<T> watchdog<T>(FutureOr<T> Function() action) async {
   final s = Stopwatch()..start();

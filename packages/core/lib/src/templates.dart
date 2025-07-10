@@ -380,6 +380,38 @@ sealed class {{# @pascal_case }}{{ obj_naming }}{{/ @pascal_case }} with _${{# @
 
 {{/ objs }}
       ''';
+const unfreezedWithDefaultAndHiveCE =
+// language=handlebars
+r'''
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hive_ce/hive.dart';
+
+part 'models.freezed.dart';
+@GenerateAdapters([
+  {{# objs }}
+  AdapterSpec<{{# @pascal_case }}{{ obj_naming }}{{/ @pascal_case }}>(),
+  {{/ objs }}
+])
+part 'models.g.dart';
+
+{{# objs }}
+@unfreezed
+sealed class {{# @pascal_case }}{{ obj_naming }}{{/ @pascal_case }} extends HiveObject with _${{# @pascal_case }}{{ obj_naming }}{{/ @pascal_case }} {
+
+  factory {{# @pascal_case }}{{ obj_naming }}{{/ @pascal_case }}({{# obj_has_fields }}{ {{/ obj_has_fields }}
+{{# obj_fields }}
+  {{^ field_is_dynamic }}@Default({{& field_default_value }}){{/ field_is_dynamic }} @JsonKey(name: '{{ field_key }}') {{# field_is_dynamic }}dynamic {{# @keywords }}{{# @camel_case }}{{ field_without_symbol_key }}{{/ @camel_case }}{{/ @keywords }},{{/ field_is_dynamic }}{{^ field_is_dynamic }}{{& field_type_naming }} {{# @keywords }}{{# @camel_case }}{{ field_without_symbol_key }}{{/ @camel_case }}{{/ @keywords }},{{/ field_is_dynamic }}
+{{/ obj_fields }}
+{{# obj_has_fields }}  }{{/ obj_has_fields }}) = _{{# @pascal_case }}{{ obj_naming }}{{/ @pascal_case }};
+
+  {{# @pascal_case }}{{ obj_naming }}{{/ @pascal_case }}._();
+
+  factory {{# @pascal_case }}{{ obj_naming }}{{/ @pascal_case }}.fromJson(Map<String, Object?> json)
+      => _${{# @pascal_case }}{{ obj_naming }}{{/ @pascal_case }}FromJson(json);
+}
+
+{{/ objs }}
+      ''';
 
 const isar =
 // language=handlebars

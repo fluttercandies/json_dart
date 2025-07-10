@@ -2,7 +2,7 @@ import 'package:dart_style/dart_style.dart';
 import 'package:mustache_template/mustache_template.dart';
 import 'package:recase/recase.dart';
 
-import '../core.dart';
+import '../jsond.dart';
 import 'type.dart';
 
 String renderObjs(

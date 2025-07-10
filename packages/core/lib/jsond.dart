@@ -1,3 +1,5 @@
+library jsond;
+
 export 'src/consts.dart';
 export 'src/extension.dart';
 export 'src/json.dart';

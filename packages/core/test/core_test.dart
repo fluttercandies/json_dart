@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:dart_style/dart_style.dart';
-import 'package:json_core/core.dart';
+import 'package:jsond/jsond.dart';
 import 'package:test/test.dart';
 
 void main() {

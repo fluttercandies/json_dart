@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:antlr4/antlr4.dart';
 import 'package:collection/collection.dart';
 
-import '../core.dart';
+import '../jsond.dart';
 import 'antlr/JSON5Lexer.dart';
 import 'antlr/JSON5Parser.dart';
 import 'type.dart';

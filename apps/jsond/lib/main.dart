@@ -13,7 +13,7 @@ import 'package:flutter_highlight/themes/tomorrow.dart';
 import 'package:highlight/languages/handlebars.dart';
 import 'package:highlight/languages/json.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:json_core/core.dart';
+import 'package:jsond/jsond.dart';
 import 'package:recase/recase.dart';
 import 'package:sliver_tools/sliver_tools.dart';
 import 'package:universal_platform/universal_platform.dart';
@@ -191,56 +191,63 @@ class _MyHomePageState extends State<MyHomePage> with WindowListener {
       template: jsonSerializableWithHiveCE,
       builtIn: true,
       dartFormat: true,
-      id: -9,
+      id: -4,
     ),
     Template(
       name: 'Freezed',
       template: freezed,
       builtIn: true,
       dartFormat: true,
-      id: -4,
+      id: -5,
     ),
     Template(
       name: 'Freezed With Default',
       template: freezedWithDefault,
       builtIn: true,
       dartFormat: true,
-      id: -8,
+      id: -6,
     ),
     Template(
       name: 'Freezed With HiveCE',
       template: freezedWithHiveCE,
       builtIn: true,
       dartFormat: true,
-      id: -10,
+      id: -7,
     ),
     Template(
       name: 'Freezed With Default And HiveCE',
       template: freezedWithDefaultAndHiveCE,
       builtIn: true,
       dartFormat: true,
-      id: -11,
+      id: -8,
+    ),
+    Template(
+      name: 'Unfreezed With Default And HiveCE',
+      template: unfreezedWithDefaultAndHiveCE,
+      builtIn: true,
+      dartFormat: true,
+      id: -9,
     ),
     Template(
       name: 'Isar',
       template: isar,
       builtIn: true,
       dartFormat: true,
-      id: -5,
+      id: -10,
     ),
     Template(
       name: 'Isar + JsonSerializable',
       template: isarWithJsonSerializable,
       builtIn: true,
       dartFormat: true,
-      id: -6,
+      id: -11,
     ),
     Template(
       name: 'Isar + Freezed',
       template: isarWithFreezed,
       builtIn: true,
       dartFormat: true,
-      id: -7,
+      id: -12,
     ),
   ];
 

@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:args/args.dart';
-import 'package:json_core/core.dart';
+import 'package:jsond/jsond.dart';
 
 import 'option.dart';
 

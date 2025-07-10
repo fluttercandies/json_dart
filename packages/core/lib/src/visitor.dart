@@ -1,6 +1,6 @@
 import 'package:collection/collection.dart';
 
-import '../core.dart';
+import '../jsond.dart';
 import 'antlr/JSON5BaseVisitor.dart';
 import 'antlr/JSON5Parser.dart';
 import 'type.dart';
