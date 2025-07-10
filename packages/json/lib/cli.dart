@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:args/args.dart';
-import 'package:jsond/jsond.dart';
+import 'package:jsond_core/core.dart';
 
 import 'option.dart';
 
@@ -48,6 +48,7 @@ Future<void> cli(List<String> arguments) async {
       'json_serializable_with_hivece',
       'freezed_with_hivece',
       'freezed_with_default_hivece',
+      'unfreezed_with_default_hivece',
     ],
     help: 'Which built-in template to use?',
   );

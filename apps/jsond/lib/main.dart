@@ -13,7 +13,7 @@ import 'package:flutter_highlight/themes/tomorrow.dart';
 import 'package:highlight/languages/handlebars.dart';
 import 'package:highlight/languages/json.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:jsond/jsond.dart';
+import 'package:jsond_core/core.dart';
 import 'package:recase/recase.dart';
 import 'package:sliver_tools/sliver_tools.dart';
 import 'package:universal_platform/universal_platform.dart';

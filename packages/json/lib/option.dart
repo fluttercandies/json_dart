@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:jsond/jsond.dart';
+import 'package:jsond_core/core.dart';
 
 class JsonOption {
   JsonOption({

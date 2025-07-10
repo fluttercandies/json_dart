@@ -1,43 +1,43 @@
-# JSON Dart Core - 核心库 (`jsond_core`)
+# JSON Dart Core - Core Library (`jsond_core`)
 
-> 🌐 **语言版本**: [中文](README.md) | [English](README_EN.md)
+> 🌐 **Language**: [中文](README.md) | [English](README_EN.md)
 
-JSON Dart 项目的核心库，提供 JSON 到 Dart 代码生成的底层功能。该库使用 ANTLR4 解析器支持 JSON5 格式，并通过 Mustache 模板引擎生成高质量的 Dart 代码。
+The core library of the JSON Dart project, providing underlying functionality for JSON to Dart code generation. This library uses an ANTLR4 parser to support JSON5 format and generates high-quality Dart code through the Mustache template engine.
 
-## 🌟 主要功能
+## 🌟 Key Features
 
-### 🔍 强大的解析能力
-- **JSON5 支持**: 基于 ANTLR4 的完整 JSON5 解析器
-- **类型推断**: 智能推断 JSON 数据的 Dart 类型
-- **嵌套结构**: 完美处理复杂嵌套对象和数组
-- **空值处理**: 智能识别可空字段
+### 🔍 Powerful Parsing Capabilities
+- **JSON5 Support**: Complete JSON5 parser based on ANTLR4
+- **Type Inference**: Intelligent inference of Dart types from JSON data
+- **Nested Structures**: Perfect handling of complex nested objects and arrays
+- **Null Handling**: Smart recognition of nullable fields
 
-### 🎨 灵活的代码生成
-- **模板引擎**: 基于 Mustache 的强大模板系统
-- **多种模板**: 内置多种主流代码生成模板
-- **自定义模板**: 支持完全自定义的代码生成模板
-- **代码格式化**: 集成 dart_style 进行代码美化
+### 🎨 Flexible Code Generation
+- **Template Engine**: Powerful template system based on Mustache
+- **Multiple Templates**: Built-in multiple mainstream code generation templates
+- **Custom Templates**: Support for fully customized code generation templates
+- **Code Formatting**: Integrated dart_style for code beautification
 
-### 🏗️ 健壮的架构
-- **类型安全**: 完整的类型系统和类型检查
-- **错误处理**: 详细的错误信息和异常处理
-- **扩展性**: 模块化设计，易于扩展新功能
-- **性能优化**: 高效的解析和生成算法
+### 🏗️ Robust Architecture
+- **Type Safety**: Complete type system and type checking
+- **Error Handling**: Detailed error messages and exception handling
+- **Extensibility**: Modular design, easy to extend with new features
+- **Performance Optimization**: Efficient parsing and generation algorithms
 
-## 🚀 快速开始
+## 🚀 Quick Start
 
-### 安装依赖
+### Install Dependencies
 ```yaml
 dependencies:
   jsond_core: ^1.0.0
 ```
 
-### 基本用法
+### Basic Usage
 ```dart
 import 'package:jsond_core/jsond_core.dart';
 
 void main() {
-  // JSON 字符串
+  // JSON string
   const jsonString = '''
   {
     "name": "John Doe",
@@ -51,11 +51,11 @@ void main() {
   }
   ''';
 
-  // 解析 JSON 并生成 Dart 代码
+  // Parse JSON and generate Dart code
   final def = JSONDef.fromString(jsonString);
   final dartCode = render(
     jsonString,
-    withFinal, // 使用内置模板
+    withFinal, // Use built-in template
     dartFormat: true
   );
 
@@ -63,168 +63,168 @@ void main() {
 }
 ```
 
-### 从文件读取
+### Reading from File
 ```dart
 import 'package:jsond_core/jsond_core.dart';
 
 Future<void> generateFromFile() async {
-  // 从文件读取并解析
+  // Read and parse from file
   final def = await JSONDef.fromPath('data.json');
 
-  // 生成代码
+  // Generate code
   final code = render(
     def.type.display,
-    freezed, // 使用 Freezed 模板
+    freezed, // Use Freezed template
     dartFormat: true,
   );
 
-  // 保存到文件
+  // Save to file
   await File('models.dart').writeAsString(code);
 }
 ```
 
-## 📚 API 文档
+## 📚 API Documentation
 
-### 核心类
+### Core Classes
 
 #### JSONDef
-JSON 定义的主要类，负责解析和类型推断。
+The main class for JSON definition, responsible for parsing and type inference.
 
 ```dart
 class JSONDef {
-  // 从字符串创建
+  // Create from string
   factory JSONDef.fromString(String json, {Map<String, String> symbols = builtInSymbols});
 
-  // 从文件创建
+  // Create from file
   static Future<JSONDef> fromPath(String path, {Map<String, String> symbols = builtInSymbols});
 
-  // 转换为模板数据
+  // Convert to template data
   Map<String, dynamic> toJson({Map<String, String> symbols = builtInSymbols});
 
-  // 更新对象名称
+  // Update object name
   void updateObjName(ObjKey key, String name);
 
-  // 属性
-  JSONType get type;           // 根类型
-  List<JSONObj> get objs;      // 所有对象
+  // Properties
+  JSONType get type;           // Root type
+  List<JSONObj> get objs;      // All objects
 }
 ```
 
 #### JSONType
-表示 JSON 数据类型的抽象类。
+Abstract class representing JSON data types.
 
 ```dart
 abstract class JSONType {
-  String get display;          // 显示字符串
-  String get dartType;         // Dart 类型
-  bool get nullable;           // 是否可空
-  bool get isObject;          // 是否为对象
-  bool get isArray;           // 是否为数组
-  bool get isPrimitive;       // 是否为基础类型
+  String get display;          // Display string
+  String get dartType;         // Dart type
+  bool get nullable;           // Whether nullable
+  bool get isObject;          // Whether is object
+  bool get isArray;           // Whether is array
+  bool get isPrimitive;       // Whether is primitive type
 }
 ```
 
 #### JSONObj
-表示 JSON 对象的类。
+Class representing JSON objects.
 
 ```dart
 class JSONObj {
-  ObjKey get key;             // 对象键
-  String get name;            // 对象名称
-  List<JSONField> get fields; // 字段列表
+  ObjKey get key;             // Object key
+  String get name;            // Object name
+  List<JSONField> get fields; // Field list
 
-  // 获取自定义名称
+  // Get custom name
   String naming({Map<String, String> symbols = builtInSymbols});
 }
 ```
 
 #### JSONField
-表示 JSON 字段的类。
+Class representing JSON fields.
 
 ```dart
 class JSONField {
-  String get key;             // 字段键
-  JSONType get type;          // 字段类型
-  bool get nullable;          // 是否可空
+  String get key;             // Field key
+  JSONType get type;          // Field type
+  bool get nullable;          // Whether nullable
 
-  // 生成反序列化代码
+  // Generate deserialization code
   String generateDeserializationCode();
 }
 ```
 
-### 渲染函数
+### Rendering Functions
 
 #### render
-主要的代码生成函数。
+Main code generation function.
 
 ```dart
 String render(
-  String json,                    // JSON 字符串
-  String template,                // 模板字符串
+  String json,                    // JSON string
+  String template,                // Template string
   {
     Set<String> keywords = builtInDartKeywords,
     Map<String, String> symbols = builtInSymbols,
-    bool dartFormat = false,      // 是否格式化代码
+    bool dartFormat = false,      // Whether to format code
   }
 );
 ```
 
 #### renderObjs
-直接从对象数据渲染代码。
+Render code directly from object data.
 
 ```dart
 String renderObjs(
-  String template,                // 模板字符串
-  Map<String, dynamic> data,      // 模板数据
+  String template,                // Template string
+  Map<String, dynamic> data,      // Template data
   {
     Set<String> keywords = builtInDartKeywords,
   }
 );
 ```
 
-### 内置模板
+### Built-in Templates
 
-库提供了多种内置模板：
+The library provides multiple built-in templates:
 
 ```dart
-// 基础模板
-const String withFinal;         // 带 final 修饰符
-const String noFinal;           // 不带 final 修饰符
+// Basic templates
+const String withFinal;         // With final modifiers
+const String noFinal;           // Without final modifiers
 
-// Json Serializable 模板
+// Json Serializable templates
 const String jsonSerializable;
 const String jsonSerializableWithHiveCE;
 
-// Freezed 模板
+// Freezed templates
 const String freezed;
 const String freezedWithDefault;
 const String freezedWithHiveCE;
 const String freezedWithDefaultAndHiveCE;
 
-// Isar 模板
+// Isar templates
 const String isar;
 const String isarWithJsonSerializable;
 const String isarWithFreezed;
 ```
 
-### 模板语法
+### Template Syntax
 
-#### 基本变量
+#### Basic Variables
 ```handlebars
 {{# objs }}
-  类名: {{ obj_name }}
-  自定义名称: {{ obj_custom_name }}
-  字段数量: {{ obj_fields_length }}
+  Class name: {{ obj_name }}
+  Custom name: {{ obj_custom_name }}
+  Field count: {{ obj_fields_length }}
 
   {{# obj_fields }}
-    字段名: {{ field_key }}
-    字段类型: {{ field_type }}
-    反序列化: {{ field_deser }}
+    Field name: {{ field_key }}
+    Field type: {{ field_type }}
+    Deserialization: {{ field_deser }}
   {{/ obj_fields }}
 {{/ objs }}
 ```
 
-#### 助手函数
+#### Helper Functions
 ```handlebars
 {{# @pascal_case }}{{ obj_name }}{{/ @pascal_case }}     // PascalCase
 {{# @camel_case }}{{ field_key }}{{/ @camel_case }}      // camelCase
@@ -232,32 +232,32 @@ const String isarWithFreezed;
 {{# @constant_case }}{{ field_key }}{{/ @constant_case }} // CONSTANT_CASE
 ```
 
-#### 条件判断
+#### Conditional Statements
 ```handlebars
 {{# field_nullable }}
-  // 字段可空时的处理
+  // Handling when field is nullable
   {{ field_type }}? {{ field_key }};
 {{/ field_nullable }}
 
 {{^ field_nullable }}
-  // 字段不可空时的处理
+  // Handling when field is not nullable
   {{ field_type }} {{ field_key }};
 {{/ field_nullable }}
 
 {{# field_is_object }}
-  // 字段是对象时的处理
+  // Handling when field is object
 {{/ field_is_object }}
 
 {{# field_is_array }}
-  // 字段是数组时的处理
+  // Handling when field is array
 {{/ field_is_array }}
 ```
 
-### 类型系统
+### Type System
 
-#### 基础类型映射
+#### Basic Type Mapping
 ```dart
-// JSON -> Dart 类型映射
+// JSON -> Dart type mapping
 String    -> String
 int       -> int
 double    -> double
@@ -265,25 +265,25 @@ bool      -> bool
 null      -> dynamic
 ```
 
-#### 复杂类型处理
+#### Complex Type Handling
 ```dart
-// 对象类型
+// Object types
 {"key": "value"} -> CustomClass
 
-// 数组类型
+// Array types
 [1, 2, 3] -> List<int>
 [{"key": "value"}] -> List<CustomClass>
 
-// 混合数组
+// Mixed arrays
 [1, "str", true] -> List<dynamic>
 
-// 可空类型
+// Nullable types
 {"key": null} -> String? key
 ```
 
-## 🛠️ 高级用法
+## 🛠️ Advanced Usage
 
-### 自定义符号表
+### Custom Symbol Table
 ```dart
 final customSymbols = {
   r'$': 'Dollar',
@@ -298,7 +298,7 @@ final def = JSONDef.fromString(
 );
 ```
 
-### 自定义关键字过滤
+### Custom Keyword Filtering
 ```dart
 final customKeywords = {
   'class',
@@ -314,11 +314,11 @@ final code = render(
 );
 ```
 
-### 自定义模板
+### Custom Templates
 ```dart
 const customTemplate = '''
 {{# objs }}
-// 自定义模板示例
+// Custom template example
 class {{# @pascal_case }}{{ obj_name }}{{/ @pascal_case }} {
   {{# obj_fields }}
   final {{ field_type }} {{# @camel_case }}{{ field_key }}{{/ @camel_case }};
@@ -344,7 +344,7 @@ class {{# @pascal_case }}{{ obj_name }}{{/ @pascal_case }} {
 final code = render(jsonString, customTemplate, dartFormat: true);
 ```
 
-### 批量处理
+### Batch Processing
 ```dart
 Future<void> batchProcess() async {
   final jsonFiles = Directory('json_files')
@@ -365,11 +365,11 @@ Future<void> batchProcess() async {
 }
 ```
 
-## 🎯 实际应用示例
+## 🎯 Real-World Examples
 
-### REST API 模型生成
+### REST API Model Generation
 ```dart
-// API 响应 JSON
+// API response JSON
 const apiResponse = '''
 {
   "status": "success",
@@ -394,13 +394,13 @@ const apiResponse = '''
 }
 ''';
 
-// 生成 JsonSerializable 模型
+// Generate JsonSerializable model
 final code = render(apiResponse, jsonSerializable, dartFormat: true);
 ```
 
-### 数据库模型生成
+### Database Model Generation
 ```dart
-// 数据库记录 JSON
+// Database record JSON
 const dbRecord = '''
 {
   "id": "uuid-string",
@@ -414,13 +414,13 @@ const dbRecord = '''
 }
 ''';
 
-// 生成 Hive 模型
+// Generate Hive model
 final code = render(dbRecord, jsonSerializableWithHiveCE, dartFormat: true);
 ```
 
-### 配置文件模型生成
+### Configuration File Model Generation
 ```dart
-// 配置文件 JSON
+// Configuration file JSON
 const config = '''
 {
   "app": {
@@ -441,14 +441,14 @@ const config = '''
 }
 ''';
 
-// 生成不可变配置模型
+// Generate immutable configuration model
 final code = render(config, freezed, dartFormat: true);
 ```
 
-## 🔧 工具集成
+## 🔧 Tool Integration
 
-### VS Code 集成
-可以创建 VS Code 任务来自动化代码生成：
+### VS Code Integration
+You can create VS Code tasks to automate code generation:
 
 ```json
 {
@@ -458,7 +458,7 @@ final code = render(config, freezed, dartFormat: true);
       "label": "Generate Models",
       "type": "shell",
       "command": "dart",
-      "args": ["run", "build_runner", "build"],
+      "args": ["run", "jsond:generate"],
       "group": "build",
       "presentation": {
         "echo": true,
@@ -471,25 +471,20 @@ final code = render(config, freezed, dartFormat: true);
 }
 ```
 
-### Build Runner 集成
+### Build Runner Integration
 ```yaml
-# pubspec.yaml
-dev_dependencies:
-  jsond: ^1.0.0
-  build_runner: ^2.3.3
-
 # build.yaml
 targets:
   $default:
     builders:
-      jsond:json:
+      jsond:
         enabled: true
         options:
           template: "freezed"
           use_dart_format: true
 ```
 
-### 自定义构建脚本
+### Custom Build Script
 ```dart
 // tool/generate_models.dart
 import 'dart:io';
@@ -520,21 +515,21 @@ Future<void> main() async {
 }
 ```
 
-## 🚀 性能优化
+## 🚀 Performance Optimization
 
-### 解析性能
-- **ANTLR4 优化**: 使用高性能的 ANTLR4 解析器
-- **增量解析**: 支持增量解析大型 JSON 文件
-- **内存管理**: 优化的内存使用策略
+### Parsing Performance
+- **ANTLR4 Optimization**: Uses high-performance ANTLR4 parser
+- **Incremental Parsing**: Support for incremental parsing of large JSON files
+- **Memory Management**: Optimized memory usage strategy
 
-### 生成性能
-- **模板缓存**: 智能缓存编译后的模板
-- **并行处理**: 支持多文件并行处理
-- **代码优化**: 生成的代码经过优化
+### Generation Performance
+- **Template Caching**: Smart caching of compiled templates
+- **Parallel Processing**: Support for multi-file parallel processing
+- **Code Optimization**: Generated code is optimized
 
-### 基准测试
+### Benchmarking
 ```dart
-// 性能测试示例
+// Performance testing example
 void benchmarkParsing() {
   final stopwatch = Stopwatch()..start();
 
@@ -543,13 +538,13 @@ void benchmarkParsing() {
   }
 
   stopwatch.stop();
-  print('1000 次解析耗时: ${stopwatch.elapsedMilliseconds}ms');
+  print('1000 parses took: ${stopwatch.elapsedMilliseconds}ms');
 }
 ```
 
-## 🧪 测试
+## 🧪 Testing
 
-### 单元测试
+### Unit Tests
 ```dart
 import 'package:test/test.dart';
 import 'package:jsond_core/jsond_core.dart';
@@ -575,7 +570,7 @@ void main() {
 }
 ```
 
-### 集成测试
+### Integration Tests
 ```dart
 void main() {
   group('Integration Tests', () {
@@ -583,21 +578,21 @@ void main() {
       final json = File('test/fixtures/complex.json').readAsStringSync();
       final code = render(json, freezed, dartFormat: true);
 
-      // 验证生成的代码能够通过 Dart 分析器
+      // Verify generated code passes Dart analyzer
       expect(code, isValidDartCode);
     });
   });
 }
 ```
 
-## 📊 监控和调试
+## 📊 Monitoring and Debugging
 
-### 日志记录
+### Logging
 ```dart
 import 'package:jsond_core/jsond_core.dart';
 
 void main() {
-  // 启用调试日志
+  // Enable debug logging
   Logger.level = LogLevel.debug;
 
   const json = '{"test": "value"}';
@@ -611,57 +606,57 @@ void main() {
 }
 ```
 
-### 错误处理
+### Error Handling
 ```dart
 try {
   final def = JSONDef.fromString(invalidJson);
 } on JSONParseException catch (e) {
-  print('JSON 解析错误: ${e.message}');
-  print('位置: 第 ${e.line} 行，第 ${e.column} 列');
+  print('JSON parse error: ${e.message}');
+  print('Location: Line ${e.line}, Column ${e.column}');
 } on TemplateException catch (e) {
-  print('模板错误: ${e.message}');
+  print('Template error: ${e.message}');
 } catch (e) {
-  print('未知错误: $e');
+  print('Unknown error: $e');
 }
 ```
 
-## 🤝 贡献指南
+## 🤝 Contributing Guide
 
-### 开发环境设置
+### Development Environment Setup
 ```bash
-# 克隆项目
+# Clone project
 git clone https://github.com/iota9star/json_dart.git
 cd json_dart/packages/core
 
-# 安装依赖
+# Install dependencies
 dart pub get
 
-# 运行测试
+# Run tests
 dart test
 
-# 运行示例
+# Run examples
 dart run example/main.dart
 ```
 
-### 添加新模板
-1. 在 `lib/src/templates.dart` 中添加模板常量
-2. 在测试中添加对应的测试用例
-3. 更新文档和示例
+### Adding New Templates
+1. Add template constants in `lib/src/templates.dart`
+2. Add corresponding test cases in tests
+3. Update documentation and examples
 
-### 贡献流程
-1. Fork 项目
-2. 创建功能分支
-3. 编写测试
-4. 实现功能
-5. 提交 PR
+### Contribution Process
+1. Fork the project
+2. Create feature branch
+3. Write tests
+4. Implement features
+5. Submit PR
 
-## 📄 许可证
+## 📄 License
 
-本项目使用 MIT 许可证 - 查看 [LICENSE](../../LICENSE) 文件了解详情。
+This project is licensed under the MIT License - see the [LICENSE](../../LICENSE) file for details.
 
-## 🔗 相关资源
+## 🔗 Related Resources
 
-- [ANTLR4 文档](https://github.com/antlr/antlr4)
-- [Mustache 模板语法](https://mustache.github.io/mustache.5.html)
-- [JSON5 规范](https://json5.org/)
-- [Dart 语言规范](https://dart.dev/guides/language/language-tour)
+- [ANTLR4 Documentation](https://github.com/antlr/antlr4)
+- [Mustache Template Syntax](https://mustache.github.io/mustache.5.html)
+- [JSON5 Specification](https://json5.org/)
+- [Dart Language Specification](https://dart.dev/guides/language/language-tour)

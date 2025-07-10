@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:build/build.dart';
-import 'package:jsond/jsond.dart';
+import 'package:jsond_core/core.dart';
 
 import 'option.dart';
 

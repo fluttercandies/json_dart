@@ -1,4 +1,4 @@
-import 'package:jsond_cli/cli.dart';
+import 'package:jsond/cli.dart';
 
 void main() {
   cli(['-h']);

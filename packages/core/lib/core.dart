@@ -1,4 +1,4 @@
-library jsond;
+library jsond_core;
 
 export 'src/consts.dart';
 export 'src/extension.dart';

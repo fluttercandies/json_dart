@@ -2,7 +2,7 @@ import 'package:antlr4/antlr4.dart';
 import 'package:collection/collection.dart';
 import 'package:meta/meta.dart';
 
-import '../jsond.dart';
+import '../core.dart';
 import 'antlr/JSON5Parser.dart';
 
 abstract class JType<T extends RuleContext, R> {

@@ -1,4 +1,4 @@
-import 'package:jsond/jsond.dart';
+import 'package:jsond_core/core.dart';
 
 void main() {
   final code = render(

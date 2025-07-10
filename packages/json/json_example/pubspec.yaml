@@ -7,7 +7,7 @@ environment:
   sdk: '>=2.19.6 <3.0.0'
 
 dependencies:
-  jsond_cli:
+  jsond:
     path: ../
 
 dev_dependencies:
